@@ -26,7 +26,7 @@ for (int i=0; i<array.GetLength(0); i++)
 
 for (int j1 = 0; j1 < array.GetLength(1); j1++)
 {
-    summa[j1] = summa[j1]/array.GetLength(1);
+    summa[j1] = summa[j1]/array.GetLength(0);
     Console.Write($"{Math.Round(summa[j1],2)} ");
 }
 
