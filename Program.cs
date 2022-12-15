@@ -1,9 +1,4 @@
-﻿/*Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
-17 -> такого числа в массиве нет*/
+﻿/*Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.*/
 
 Console.Write($"Введите количество строк m = ");
 int m = int.Parse(Console.ReadLine()!);
@@ -11,26 +6,32 @@ Console.Write($"Введите количество столбцов n = ");
 int n = int.Parse(Console.ReadLine()!);
 
 int[,] array = new int [m,n];
+double [] summa = new double[array.GetLength(1)];
 
 for (int i=0; i<array.GetLength(0); i++)
     {
         for (int j=0;j<array.GetLength(1); j++)
         {
-            array[i, j] = new Random().Next(-10,10);
+            array[i, j] = new Random().Next(0,10);
         }
     }
 PrintArray(array);
 
-Console.Write($"Введите номер элемента i = ");
-int i1 = int.Parse(Console.ReadLine()!);
-Console.Write($"j = ");
-int j1 = int.Parse(Console.ReadLine()!);
+for (int i=0; i<array.GetLength(0); i++)
+    {
+        for (int j=0;j<array.GetLength(1); j++)
+            summa[j] = summa[j] + array[i,j];
+             
+    }
 
-if (i1<array.GetLength(0) & j1<array.GetLength(1))
-    Console.Write($"Значение элемента [{i1},{j1}] равно {array[i1,j1]}");
-    else Console.Write($"Такого числа в массиве нет");
+for (int j1 = 0; j1 < array.GetLength(1); j1++)
+{
+    summa[j1] = summa[j1]/array.GetLength(1);
+    Console.Write($"{Math.Round(summa[j1],2)} ");
+}
 
-void PrintArray(int[,] matr)
+
+void PrintArray(int[,] matr) // вывод массива на экран
 {
     for (int i=0; i<matr.GetLength(0); i++)
     {
